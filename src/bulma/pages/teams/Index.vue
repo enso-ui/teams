@@ -5,7 +5,7 @@
                 @click="team=factory()"
                 :disabled="team">
                 <span class="icon is-small">
-                    <fa icon="plus"/>
+                    <fa :icon="faPlus"/>
                 </span>
                 <span>
                     {{ i18n('New team') }}
@@ -18,7 +18,7 @@
                     :placeholder="i18n('Filter teams')"
                     v-model="query">
                 <span class="icon is-small is-left">
-                    <fa icon="search"/>
+                    <fa :icon="faSearch"/>
                 </span>
                 <span class="icon is-small is-right clear-button"
                     v-if="query"
@@ -31,7 +31,7 @@
             v-if="!ready && loading">
             {{ i18n('Loading') }}
             <span class="icon is-small ml-2">
-                <fa icon="spinner"
+                <fa :icon="faSpinner"
                     size="xs"
                     spin/>
             </span>
@@ -61,11 +61,8 @@
 
 <script>
 import { FontAwesomeIcon as Fa } from '@fortawesome/vue-fontawesome';
-import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPlus, faSearch, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import Team from './components/Team.vue';
-
-library.add(faPlus, faSearch, faSpinner);
 
 export default {
     name: 'Index',
@@ -75,6 +72,9 @@ export default {
     inject: ['errorHandler', 'http', 'i18n', 'route'],
 
     data: () => ({
+        faPlus,
+        faSearch,
+        faSpinner,
         loading: false,
         ready: false,
         teams: [],
