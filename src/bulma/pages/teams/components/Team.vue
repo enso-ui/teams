@@ -1,5 +1,5 @@
 <template>
-    <div class="box info-box is-paddingless"
+    <div class="box info-box p-0"
         :class="[
             { 'is-danger': team.edit && !team.id },
             { 'is-warning': team.edit && team.id },
